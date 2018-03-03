@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"  ></script>
+<script type="text/javascript">
+var axios = require("axios");
+
+function buscarDados(){
+
+	return axios.get("https://api.github.com/users/henriqueCN");
+
+}
+
+dados = buscarDados();
+
+dados.then(function(resposta){
+
+getElementById(nome).value(resposta.data["name"]);
+getElementById(biog).value(resposta.data["bio"]);
+
+}).catch(function(error){
+
+	if(error){
+	console.log(error);
+}
+
+})
+</script>
+</head>
+	<body>
+		<center>
+<input type="text" placeholder="nome" id = "nome" name="nome"><br>
+<input type="text" placeholder="Biografia" id = "bio" name="biografia">
+	</body>
+</html>
