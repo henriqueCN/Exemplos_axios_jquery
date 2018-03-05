@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+
+function buscarDados(){
+
+	return axios.get("https://api.github.com/users/henriqueCN");
+}
+
+dados = buscarDados(); //atribuindo o valor do retorn do metodo a variavel dados
+
+dados.then(function(resposta){
+  obj =(resposta.data);
+
+	var nom_json = JSON.stringify(obj.name); 
+	var bio_json = JSON.stringify(obj.bio);    //buscando resultados na API
+	
+var nome = nom_json;
+var biogr = bio_json;  //atribuindo o valor retornado das APIs a variaveis
+
+document.getElementById("nome").value = nome;
+document.getElementById("bio").value = biogr; //Atribuindo valor retornado das APIs aos elemenos html
+
+	if(error){      //tratamento de erro
+	alert(error);
+}
+
+})
+/*axios.get("https://api.github.com/users/henriqueCN").then(function(response){
+	alert(JSON.stringify(response.data, null, '\t'));
+});*/
+</script>
+</head>
+	<body>
+		<center>
+<h3>Este exemplo retornara meu nome e a minha biografia do meu Github</h3>
+<h3>atraves do axios</h3>
+Nome:<input type="text" placeholder="nome" id = "nome" name="nome"><br>
+Biografia:<input type="text" style="width: 600px;" placeholder="Biografia" id = "bio" name="biografia">
+	</body>
+</html>
